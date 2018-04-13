@@ -1929,7 +1929,7 @@ if (process.env.NODE_ENV !== 'production') {
   var hasHandler = {
     has: function has (target, key) {
       var has = key in target;
-      var isAllowed = allowedGlobals(key) || key.charAt(0) === '_';
+      var isAllowed = allowedGlobals(key) || (typeof key === 'string' && key.charAt(0) === '_');
       if (!has && !isAllowed) {
         warnNonPresent(target, key);
       }
